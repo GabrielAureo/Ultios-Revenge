@@ -26,12 +26,12 @@ public class GameStory : MonoBehaviour {
 	}
 	void StartStory () {
 		story = new Story (inkJSONAsset.text);
-		RefreshView();
+		//RefreshView();
 	}
 		
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.E)){
+		if(Input.GetButtonDown("Fire1") && reading){
 			RefreshView();
 		}
 	}
