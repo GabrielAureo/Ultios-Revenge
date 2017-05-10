@@ -5,11 +5,12 @@ using UnityEngine;
 public class AttackTrigger : MonoBehaviour {
 	
 	private GameObject player;
+	private float damage;
 
 	// Use this for initialization
 	void Start () {
-		player = transform.parent.gameObject;
-		Physics2D.IgnoreCollision (GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
+		player = transform.root.gameObject;
+		damage = player.GetComponent<PlayerController>().damage;
 	}
 	
 	// Update is called once per frame
@@ -18,8 +19,9 @@ public class AttackTrigger : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
+		Debug.Log(col);
 		if (col.CompareTag ("Enemy")) {
-			col.gameObject.GetComponent<EnemyController> ().takeDamage (1);
+			col.transform.root.GetComponent<IKillable> ().takeDamage (damage);
 		}
 	}
 }

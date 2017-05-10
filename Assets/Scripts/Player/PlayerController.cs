@@ -6,17 +6,16 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField]
 	private Rigidbody2D rb;
 	[SerializeField]
-	private GameObject atkHit;
 
 	public float walkingSpeed;
 
 	public GameStory story;
+	public float health;
+	public float damage;
 
 	// Use this for initialization
 	void Start () {
-		rb = gameObject.GetComponent<Rigidbody2D> ();
-		atkHit = transform.FindChild ("Attack Trigger").gameObject;
-		atkHit.SetActive (false);
+		rb = gameObject.GetComponent<Rigidbody2D>();
 	}
 
 	void Update(){
@@ -26,14 +25,8 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		rb.velocity = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical")) * walkingSpeed;
-
-		if (Input.GetButtonDown("Fire1")) {
-			atkHit.SetActive(true);
-		}
-		if (Input.GetButtonUp("Fire1")) {
-			atkHit.SetActive (false);
-		}
 	}
 
+	
 
 }

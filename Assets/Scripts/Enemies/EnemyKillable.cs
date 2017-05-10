@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour {
+public class EnemyKillable : MonoBehaviour, IKillable {
 
-	public int health;
-	public int attack;
-	public int damage;
+	public Enemy enemy;
 
 	public RoomManager room;
 
 	// Use this for initialization
 	void Start () {
 		room = GameObject.FindGameObjectWithTag ("Room Manager").GetComponent<RoomManager> ();
+		enemy = gameObject.GetComponent<Enemy>();
 	}
 	
 	// Update is called once per frame
@@ -20,15 +19,15 @@ public class EnemyController : MonoBehaviour {
 		
 	}
 
-	private void Die(){
+	public void Die(){
 		room.enemyKilled ();
 		gameObject.SetActive (false);
 
 	}
 
-	public void takeDamage(int damage){
-		health -= damage;
-		if (health <= 0) {
+	public void takeDamage(float damage){
+		enemy.health -= damage;
+		if (enemy.health <= 0) {
 			Die ();
 		}
 	}
