@@ -16,7 +16,7 @@ public class RoomManager : MonoBehaviour {
 		diary.SetActive(false);
 		enemies = GameObject.FindGameObjectsWithTag ("Enemy").Length;
 		if(startRoomPath != ""){
-			if (!story.reading) {
+			if (!GameStory.reading) {
 				story.story.ChoosePathString (startRoomPath);
 				story.RefreshView ();
 			}
@@ -38,7 +38,7 @@ public class RoomManager : MonoBehaviour {
 
 	void clearedRoomDialog(){
 		if(endRoomPath != ""){
-			if (!story.reading) {
+			if (!GameStory.reading) {
 				story.story.ChoosePathString (endRoomPath);
 				story.RefreshView ();
 			}

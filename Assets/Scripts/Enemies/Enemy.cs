@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour {
+public abstract class Enemy : MonoBehaviour, IEntity {
 
-	public Rigidbody2D rb;
-	public GameObject player;
+	protected Rigidbody2D rb;
+	protected GameObject player;
+	protected GameStory story;
+
 	public float health;
-	public float attack;
-	public GameStory story;
+	public float damage;
 	public float speed;
 	private bool shouldPatrol = true;
 
@@ -22,7 +23,7 @@ public abstract class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(!story.reading){
+		if(!GameStory.reading){
 			if(shouldPatrol){
 				Patrol();
 			}else{
@@ -38,4 +39,17 @@ public abstract class Enemy : MonoBehaviour {
 	public void playerSighted(){
 		shouldPatrol = false;
 	}
+
+	public float getHealth(){
+		return health;
+	}
+
+	public float getDamage(){
+		return damage;
+	}
+
+	public void setHealth(float damage){
+		health -= damage;
+	}
+
 }

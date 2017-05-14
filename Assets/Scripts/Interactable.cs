@@ -9,7 +9,7 @@ public class Interactable : MonoBehaviour {
 	public GameStory story;
 
 	public void Interact(){
-		if(!story.reading){
+		if(!GameStory.reading){
 			story.story.ChoosePathString(storyPath);
 			story.RefreshView();
 		}

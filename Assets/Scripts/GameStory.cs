@@ -12,11 +12,7 @@ public class GameStory : MonoBehaviour {
 	public RectTransform textBox;
 	public TextMeshProUGUI text;
 
-	public bool reading{
-		get{
-			return textBox.gameObject.activeSelf;
-		}
-	}
+	public static bool reading;
 
 
 	// Use this for initialization
@@ -39,6 +35,7 @@ public class GameStory : MonoBehaviour {
 	public void RefreshView(){
 		if (story.canContinue) {
 			textBox.gameObject.SetActive (true);
+			reading = true;
 			text.text = story.Continue ().Trim();
 		}else{
 			HideView();
@@ -47,6 +44,7 @@ public class GameStory : MonoBehaviour {
 
 	void HideView(){
 		textBox.gameObject.SetActive (false);
+		reading = false;
 	}
 
 }

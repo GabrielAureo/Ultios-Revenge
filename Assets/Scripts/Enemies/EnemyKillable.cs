@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class EnemyKillable : MonoBehaviour, IKillable {
 
-	public Enemy enemy;
-
+	public IEntity enemy;
 	public RoomManager room;
 
 	// Use this for initialization
 	void Start () {
 		room = GameObject.FindGameObjectWithTag ("Room Manager").GetComponent<RoomManager> ();
-		enemy = gameObject.GetComponent<Enemy>();
+		enemy = gameObject.GetComponent<IEntity>();
 	}
 	
 	// Update is called once per frame
@@ -26,8 +25,8 @@ public class EnemyKillable : MonoBehaviour, IKillable {
 	}
 
 	public void takeDamage(float damage){
-		enemy.health -= damage;
-		if (enemy.health <= 0) {
+		enemy.setHealth(damage);
+		if (enemy.getHealth() <= 0) {
 			Die ();
 		}
 	}

@@ -2,27 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCombat : MonoBehaviour {
+public class Player: MonoBehaviour, IEntity {
+	private Rigidbody2D rb;
+	private GameObject atkPivot;
 
-	public GameObject atkPivot;
-
+	public float health;
+	public float damage;
+	public float speed;
+	
 	public float atkCooldown;
 
 	public float atkDuration;
 
 	private float nextAtk;
 
+
+
+	// Use this for initialization
 	void Start () {
+		rb = gameObject.GetComponent<Rigidbody2D>();
 		atkPivot = transform.GetChild(0).gameObject;
 		atkPivot.SetActive (false);
-		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	void Update(){
+		if (GameStory.reading) {
+			rb.velocity = Vector2.zero;
+			return;
+		}
+
+		Movement();
 		Combat();
-	}
 		
+	}
+
+	void Movement(){
+		rb.velocity = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical")) * speed;
+	}
 
 	void Combat(){
 		if(Input.GetAxisRaw("Horizontal") > 0){
@@ -47,5 +63,18 @@ public class PlayerCombat : MonoBehaviour {
 		atkPivot.SetActive(false);
 	}
 
+	public float getHealth(){
+		return health;
+	}
+
+	public float getDamage(){
+		return damage;
+	}
+
+	public void setHealth(float damage){
+		health -= damage;
+	}
+
+	
 
 }
