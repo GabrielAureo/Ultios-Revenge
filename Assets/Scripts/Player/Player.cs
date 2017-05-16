@@ -53,6 +53,7 @@ public class Player: MonoBehaviour, IEntity {
         animator.SetFloat("attackUp", (nextAtkUpSprite - Time.time));
         animator.SetFloat("attackRight", (nextAtkRightSprite - Time.time));
         animator.SetFloat("attackLeft", (nextAtkLeftSprite - Time.time));
+        animator.SetBool("downMovement", false);
 
         if (Input.GetAxisRaw("Vertical") > 0)
         {
@@ -82,6 +83,22 @@ public class Player: MonoBehaviour, IEntity {
         {
             animator.SetFloat("stay", 2f);
             animator.SetFloat("walk", 0f);
+        }
+        if (Input.GetAxisRaw("Horizontal") < 0 && Input.GetAxisRaw("Vertical") < 0)
+        {
+            animator.SetBool("downMovement", true);
+        }
+        else if(Input.GetAxisRaw("Horizontal") > 0 && Input.GetAxisRaw("Vertical") < 0)
+        {
+            animator.SetBool("downMovement", true);
+        }
+        else if (Input.GetAxisRaw("Horizontal") > 0 && Input.GetAxisRaw("Vertical") > 0)
+        {
+            animator.SetBool("downMovement", true);
+        }
+        else if (Input.GetAxisRaw("Horizontal") < 0 && Input.GetAxisRaw("Vertical") > 0)
+        {
+            animator.SetBool("downMovement", true);
         }
     }
 
