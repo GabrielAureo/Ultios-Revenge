@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player: MonoBehaviour, IEntity {
 
     private Rigidbody2D rb;
 	private GameObject atkPivot;
+    public Image life;
 
 	public float health;
 	public float damage;
@@ -39,12 +41,10 @@ public class Player: MonoBehaviour, IEntity {
 			rb.velocity = Vector2.zero;
 			return;
 		}
-
         Animation();
         Movement();
 		Combat();
-		
-	}
+    }
 
     void Animation()
     {
@@ -57,25 +57,21 @@ public class Player: MonoBehaviour, IEntity {
 
         if (Input.GetAxisRaw("Vertical") > 0)
         {
-            Debug.Log("Pressing W");
             animator.SetFloat("stay", 0f);
             animator.SetFloat("walk", 1f);
         }
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            Debug.Log("Pressing A");
             animator.SetFloat("stay", 0f);
             animator.SetFloat("walk", 7f);
         }
         else if (Input.GetAxisRaw("Vertical") < 0)
         {
-            Debug.Log("Pressing S");
             animator.SetFloat("stay", 0f);
             animator.SetFloat("walk", 5f);
         }
         else if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            Debug.Log("Pressing D");
             animator.SetFloat("stay", 0f);
             animator.SetFloat("walk", 3f);
         }
@@ -105,11 +101,25 @@ public class Player: MonoBehaviour, IEntity {
 	void Movement(){
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed * 10;
+            if (rb.velocity.x < -2.3 || rb.velocity.x > 0.35)
+            {
+                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed * 10;
+            }
         }
         else
         {
-            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed;
+           if(rb.transform.position.x <= 6 && rb.transform.position.x >= 0.4 && rb.transform.position.y <= 4.6f && rb.transform.position.y >= -0.6f)
+            {
+                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed;
+                
+            }
+            else
+            {
+                rb.velocity = new Vector2(0,0);
+                float positionX = Mathf.Clamp(rb.transform.position.x, 0.4f, 6f);
+                float positionY = Mathf.Clamp(rb.transform.position.y, -0.6f, 4.6f);
+                rb.transform.position = new Vector3(positionX, positionY, this.transform.position.z);
+            }
         }
     }
 
@@ -172,8 +182,7 @@ public class Player: MonoBehaviour, IEntity {
 
 	public void setHealth(float damage){
 		health -= damage;
+        life.fillAmount -= 0.1f;
 	}
-
-	
 
 }

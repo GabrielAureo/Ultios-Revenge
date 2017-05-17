@@ -4,15 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerKillable : MonoBehaviour, IKillable {
-	public IEntity player;
+
+    public IEntity player;
 	public GameObject gameover;
-	// Use this for initialization
-	void Start () {
+
+    void Start () {
 		player = gameObject.GetComponent<IEntity>();
-		
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}
@@ -22,15 +21,10 @@ public class PlayerKillable : MonoBehaviour, IKillable {
 		if(player.getHealth() <= 0){
 			Die();
 		}
-
 	}
 
 	public void Die(){
-		Debug.Log("Você faleceu :c");
-		/*GameObject.FindGameObjectWithTag("Game Over").SetActive(true);
-		if(Input.GetKey(KeyCode.Space)){
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-		}*/
-
-	}
+        //Debug.Log("Você faleceu :c");
+        SceneManager.LoadScene("Lose");
+    }
 }
