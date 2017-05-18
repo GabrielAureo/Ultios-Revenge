@@ -24,7 +24,13 @@ public class EnemyKillable : MonoBehaviour, IKillable {
 
 	}
 
-	public void takeDamage(float damage){
+    public void throwBack()
+    {
+        Debug.Log("Funciona");
+        // Código para o throwBack do Inimigo
+    }
+
+    public void takeDamage(float damage){
 		enemy.setHealth(damage);
 		if (enemy.getHealth() <= 0) {
 			Die ();

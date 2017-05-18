@@ -7,6 +7,7 @@ public class Player: MonoBehaviour, IEntity {
 
     private Rigidbody2D rb;
 	private GameObject atkPivot;
+    private SpriteRenderer sprite;
     public Image life;
 
 	public float health;
@@ -28,9 +29,14 @@ public class Player: MonoBehaviour, IEntity {
 
     public Animator animator;
 
+    private bool setDamage;
+    public float damageSpriteTime;
+    private float backToDefault;
+
     // Use this for initialization
     void Start () {
 		rb = this.gameObject.GetComponent<Rigidbody2D>();
+        sprite = this.gameObject.GetComponent<SpriteRenderer>();
 		atkPivot = transform.GetChild(0).gameObject;
 		atkPivot.SetActive (false);
         animator = GetComponent<Animator>();
@@ -41,6 +47,8 @@ public class Player: MonoBehaviour, IEntity {
 			rb.velocity = Vector2.zero;
 			return;
 		}
+
+        SpriteRend();
         Animation();
         Movement();
 		Combat();
@@ -166,6 +174,14 @@ public class Player: MonoBehaviour, IEntity {
         }
     }
 
+    void SpriteRend()
+    {
+        if(Time.time > backToDefault)
+        {
+            sprite.color = Color.white;
+        }
+    }
+
 	IEnumerator Attack(){
 		atkPivot.SetActive(true);
 		yield return new WaitForSeconds(atkDuration);
@@ -181,8 +197,10 @@ public class Player: MonoBehaviour, IEntity {
 	}
 
 	public void setHealth(float damage){
-		health -= damage;
+        health -= damage;
         life.fillAmount -= 0.1f;
-	}
+        sprite.color = Color.red;
+        backToDefault = Time.time + damageSpriteTime;
+    }
 
 }

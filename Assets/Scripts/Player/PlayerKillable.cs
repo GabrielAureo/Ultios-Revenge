@@ -22,9 +22,14 @@ public class PlayerKillable : MonoBehaviour, IKillable {
 			Die();
 		}
 	}
+    
+    public void throwBack()
+    {
+        Debug.Log("Funciona");
+        // Código para o throwBack do personagem
+    }
 
 	public void Die(){
-        //Debug.Log("Você faleceu :c");
         SceneManager.LoadScene("Lose");
     }
 }

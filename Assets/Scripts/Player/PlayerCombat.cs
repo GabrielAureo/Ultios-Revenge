@@ -14,8 +14,7 @@ public class PlayerCombat : MonoBehaviour {
 
 	void Start () {
 		atkPivot = transform.GetChild(0).gameObject;
-		atkPivot.SetActive (false);
-		
+		atkPivot.SetActive (false);	
 	}
 	
 	// Update is called once per frame
