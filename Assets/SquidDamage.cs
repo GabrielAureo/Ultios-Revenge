@@ -6,6 +6,8 @@ public class SquidDamage : MonoBehaviour
 {
     public GameObject monsterDamage;
     private int value;
+    public AudioSource swordOnEnemy;
+    public AudioClip slash;
 
     public void getCol(Collider2D col, float damage)
     {
@@ -15,6 +17,8 @@ public class SquidDamage : MonoBehaviour
             value = value + 1;
             if (col.GetInstanceID() == cols.GetInstanceID()) { break; }
         }
+        swordOnEnemy = GetComponent<AudioSource>();
+        swordOnEnemy.PlayOneShot(slash, 10);
         col.transform.root.GetComponent<IKillable>().takeDamage(damage, value);
     }   
 }

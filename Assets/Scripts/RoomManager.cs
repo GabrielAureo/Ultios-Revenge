@@ -15,6 +15,7 @@ public class RoomManager : MonoBehaviour {
 	void Start () {
 		diary.SetActive(false);
 		enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        Debug.Log(enemies);
 		if(startRoomPath != ""){
 			if (!GameStory.reading) {
 				story.story.ChoosePathString (startRoomPath);
@@ -28,9 +29,9 @@ public class RoomManager : MonoBehaviour {
     }
 
 	public void enemyKilled(){
-        Debug.Log("Enemy Killed");
         enemies--;
-		if(enemies == 0){
+        Debug.Log("Enemie Killed, the current number of enemies alive are : " + enemies);
+        if (enemies == 0){
 			clearedRoomDialog();
 			diary.SetActive(true);
 		}

@@ -218,7 +218,7 @@ public class Player: MonoBehaviour, IEntity {
 	}
 
 	public void setHealth(float damage){
-        if (!cannotBeDamaged)
+        if (!cannotBeDamaged && Time.time > backToDefault)
         {
             health -= damage;
             life.fillAmount -= 0.1f;

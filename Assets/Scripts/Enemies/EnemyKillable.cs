@@ -8,7 +8,7 @@ public class EnemyKillable : MonoBehaviour, IKillable {
 	public RoomManager room;
     public Rigidbody2D rb;
 
-    private bool pushingBack = false;
+    public bool pushingBack;
 
     private float inDamage;
     public float damageTime;
@@ -24,7 +24,7 @@ public class EnemyKillable : MonoBehaviour, IKillable {
 
     public void takeDamage(float damage, int i)
     {
-        if (Time.time > inDamage)
+        if (Time.time > inDamage && !pushingBack)
         {
             enemy.setHealth(damage);
             StartCoroutine(ThrowBack(i));
@@ -41,13 +41,18 @@ public class EnemyKillable : MonoBehaviour, IKillable {
 		
 	}
 
+
 	public void Die(){
-		room.enemyKilled ();
-		gameObject.SetActive(false);
+        if (gameObject.activeSelf)
+        {
+            room.enemyKilled();
+            gameObject.SetActive(false);
+        }
 	}
 
     IEnumerator ThrowBack(int findDamage)
     {
+        pushingBack = true;
         if (findDamage == 1)
         {
             Vector3 newPosition = new Vector3(rb.transform.position.x + 0.8f, rb.transform.position.y, rb.transform.position.z);
@@ -68,5 +73,6 @@ public class EnemyKillable : MonoBehaviour, IKillable {
             Vector3 newPosition = new Vector3(rb.transform.position.x, rb.transform.position.y - 0.8f, rb.transform.position.z);
             yield return rb.transform.position = newPosition;
         }
+        pushingBack = false;
     }
 }

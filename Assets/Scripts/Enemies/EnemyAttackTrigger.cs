@@ -16,7 +16,6 @@ public class EnemyAttackTrigger : AttackTrigger {
                 value = value + 1;
                 if (col.GetInstanceID() == cols.GetInstanceID()) { break; }
             }
-            Debug.Log(value);
             col.transform.root.GetComponent<IKillable>().takeDamage(damage, value);       
         }
     }
