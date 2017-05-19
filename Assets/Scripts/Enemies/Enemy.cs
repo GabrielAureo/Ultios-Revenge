@@ -8,15 +8,21 @@ public abstract class Enemy : MonoBehaviour, IEntity {
 	protected GameObject player;
 	protected GameStory story;
 
-	public float health;
+    private SpriteRenderer sprite;
+
+    public float health;
 	public float damage;
 	public float speed;
 	private bool shouldPatrol = true;
 
-	// Use this for initialization
-	void Start () {
+    public float damageSpriteTime;
+    private float backToDefault;
+
+    // Use this for initialization
+    void Start () {
 		player = GameObject.FindGameObjectWithTag("Player");
-		rb = gameObject.GetComponent<Rigidbody2D>();
+        sprite = this.gameObject.GetComponent<SpriteRenderer>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
 		story = GameObject.FindGameObjectWithTag("Story").GetComponent<GameStory>();
 	}
 	
@@ -28,7 +34,8 @@ public abstract class Enemy : MonoBehaviour, IEntity {
 			}else{
 				Attack();
 			}	
-		}		
+		}
+        SpriteRend();
 	}
 
 	protected abstract void Patrol ();
@@ -39,7 +46,12 @@ public abstract class Enemy : MonoBehaviour, IEntity {
 		shouldPatrol = false;
 	}
 
-	public float getHealth(){
+    public void playerSightedStop()
+    {
+        shouldPatrol = true;
+    }
+
+    public float getHealth(){
 		return health;
 	}
 
@@ -47,8 +59,18 @@ public abstract class Enemy : MonoBehaviour, IEntity {
 		return damage;
 	}
 
-	public void setHealth(float damage){
+    void SpriteRend()
+    {
+        if (Time.time > backToDefault)
+        {
+            sprite.color = Color.white;
+        }
+    }
+
+    public void setHealth(float damage){
 		health -= damage;
-	}
+        sprite.color = Color.red;
+        backToDefault = Time.time + damageSpriteTime;
+    }
 
 }

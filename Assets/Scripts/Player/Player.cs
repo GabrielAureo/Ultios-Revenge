@@ -27,18 +27,21 @@ public class Player: MonoBehaviour, IEntity {
 
 	private float nextAtk;
 
+    private bool dashing;
+
     public Animator animator;
 
     private bool setDamage;
     public float damageSpriteTime;
     private float backToDefault;
+    private bool cannotBeDamaged;
 
     // Use this for initialization
     void Start () {
 		rb = this.gameObject.GetComponent<Rigidbody2D>();
         sprite = this.gameObject.GetComponent<SpriteRenderer>();
 		atkPivot = transform.GetChild(0).gameObject;
-		atkPivot.SetActive (false);
+		atkPivot.SetActive(false);
         animator = GetComponent<Animator>();
     }
 
@@ -52,6 +55,16 @@ public class Player: MonoBehaviour, IEntity {
         Animation();
         Movement();
 		Combat();
+        Blocked();
+    }
+
+    void Blocked()
+    {
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            cannotBeDamaged = true;
+        }
+        else { cannotBeDamaged = false; }
     }
 
     void Animation()
@@ -107,16 +120,16 @@ public class Player: MonoBehaviour, IEntity {
     }
 
 	void Movement(){
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse2))
         {
-            if (rb.velocity.x < -2.3 || rb.velocity.x > 0.35)
+            if (rb.transform.position.x <= 6 && rb.transform.position.x >= 0.4 && rb.transform.position.y <= 4.6f && rb.transform.position.y >= -0.6f)
             {
-                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed * 10;
+                StartCoroutine(Dash());
             }
         }
         else
         {
-           if(rb.transform.position.x <= 6 && rb.transform.position.x >= 0.4 && rb.transform.position.y <= 4.6f && rb.transform.position.y >= -0.6f)
+           if(rb.transform.position.x <= 6 && rb.transform.position.x >= 0.4 && rb.transform.position.y <= 4.6f && rb.transform.position.y >= -0.6f && !dashing)
             {
                 rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed;
                 
@@ -182,11 +195,19 @@ public class Player: MonoBehaviour, IEntity {
         }
     }
 
-	IEnumerator Attack(){
+	IEnumerator Attack()
+    {
 		atkPivot.SetActive(true);
 		yield return new WaitForSeconds(atkDuration);
 		atkPivot.SetActive(false);
 	}
+
+    IEnumerator Dash()
+    {
+        dashing = true;
+        yield return rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed * 10;
+        dashing = false;
+    }
 
 	public float getHealth(){
 		return health;
@@ -197,10 +218,13 @@ public class Player: MonoBehaviour, IEntity {
 	}
 
 	public void setHealth(float damage){
-        health -= damage;
-        life.fillAmount -= 0.1f;
-        sprite.color = Color.red;
-        backToDefault = Time.time + damageSpriteTime;
+        if (!cannotBeDamaged)
+        {
+            health -= damage;
+            life.fillAmount -= 0.1f;
+            sprite.color = Color.red;
+            backToDefault = Time.time + damageSpriteTime;
+        }
     }
 
 }

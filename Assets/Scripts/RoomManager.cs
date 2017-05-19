@@ -14,7 +14,7 @@ public class RoomManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		diary.SetActive(false);
-		enemies = GameObject.FindGameObjectsWithTag ("Enemy").Length;
+		enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
 		if(startRoomPath != ""){
 			if (!GameStory.reading) {
 				story.story.ChoosePathString (startRoomPath);
@@ -25,11 +25,11 @@ public class RoomManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+    }
 
 	public void enemyKilled(){
-		enemies--;
+        Debug.Log("Enemy Killed");
+        enemies--;
 		if(enemies == 0){
 			clearedRoomDialog();
 			diary.SetActive(true);

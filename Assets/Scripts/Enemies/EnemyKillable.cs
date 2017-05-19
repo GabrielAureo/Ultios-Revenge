@@ -6,34 +6,67 @@ public class EnemyKillable : MonoBehaviour, IKillable {
 
 	public IEntity enemy;
 	public RoomManager room;
+    public Rigidbody2D rb;
 
-	// Use this for initialization
-	void Start () {
-		room = GameObject.FindGameObjectWithTag ("Room Manager").GetComponent<RoomManager> ();
-		enemy = gameObject.GetComponent<IEntity>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    private bool pushingBack = false;
+
+    private float inDamage;
+    public float damageTime;
+
+    // Use this for initialization
+    void Start()
+    {
+        room = GameObject.FindGameObjectWithTag("Room Manager").GetComponent<RoomManager>();
+        enemy = gameObject.GetComponent<IEntity>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        inDamage = 0;
+    }
+
+    public void takeDamage(float damage, int i)
+    {
+        if (Time.time > inDamage)
+        {
+            enemy.setHealth(damage);
+            StartCoroutine(ThrowBack(i));
+            inDamage = Time.time + damageTime;
+        }
+        if (enemy.getHealth() <= 0)
+        {
+            Die();
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
 	public void Die(){
 		room.enemyKilled ();
-		gameObject.SetActive (false);
-
+		gameObject.SetActive(false);
 	}
 
-    public void throwBack()
+    IEnumerator ThrowBack(int findDamage)
     {
-        Debug.Log("Funciona");
-        // Código para o throwBack do Inimigo
+        if (findDamage == 1)
+        {
+            Vector3 newPosition = new Vector3(rb.transform.position.x + 0.8f, rb.transform.position.y, rb.transform.position.z);
+            yield return rb.transform.position = newPosition;
+        }
+        else if (findDamage == 4)
+        {
+            Vector3 newPosition = new Vector3(rb.transform.position.x, rb.transform.position.y + 0.8f, rb.transform.position.z);
+            yield return rb.transform.position = newPosition;
+        }
+        else if (findDamage == 2)
+        {
+            Vector3 newPosition = new Vector3(rb.transform.position.x - 0.8f, rb.transform.position.y, rb.transform.position.z);
+            yield return rb.transform.position = newPosition;
+        }
+        else if (findDamage == 3)
+        {
+            Vector3 newPosition = new Vector3(rb.transform.position.x, rb.transform.position.y - 0.8f, rb.transform.position.z);
+            yield return rb.transform.position = newPosition;
+        }
     }
-
-    public void takeDamage(float damage){
-		enemy.setHealth(damage);
-		if (enemy.getHealth() <= 0) {
-			Die ();
-		}
-	}
 }

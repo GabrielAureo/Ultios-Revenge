@@ -9,8 +9,8 @@ public class SmallEnemy : Enemy {
 	}
 
 	override protected void Patrol(){
-		//padroes de movimento
-	}
+        rb.velocity = (player.transform.position - transform.position).normalized * 0;
+    }
 
 
 }

@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PlayerAttackTrigger : AttackTrigger {
 
+    public ContactPoint2D contactPoint;
+
 	override protected void OnTriggerEnter2D(Collider2D col){
 		if (col.CompareTag("Enemy")) {
-			col.transform.root.GetComponent<IKillable>().takeDamage(damage);
+            col.transform.GetComponent<SquidDamage>().getCol(col, damage);
 		}
 	}
+   
 }
