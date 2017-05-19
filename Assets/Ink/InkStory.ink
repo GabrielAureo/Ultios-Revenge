@@ -1,18 +1,28 @@
 === firstRoomStart ===
-Kyo: Finalmente cheguei a esse lugar. Foi nessa masmorra que aqueles aldeões avistaram um grupo de demônios.
-Kyo: Heh. Não é nada que umas moedas de ouros e ração não resolvam para aqueles pobres desgraçados.
-Kyo:E eu ainda tenho a chance de encontrar ele… 
+Ultio: Finalmente cheguei a esse lugar. Foi nessa masmorra que aqueles aldeões avistaram um grupo de demônios.
+Ultio: Heh. Não é nada que umas moedas de ouros e ração não resolvam para aqueles pobres desgraçados.
+Ultio:E eu ainda tenho a chance de encontrar ele… 
 ->END
 
 === tutorialRoomStart ===
-Kyo: Não pode ser! Essas criaturas…
-Kyo: INVEJAAAA!
+Ultio: Não pode ser! Essas criaturas…
+Ultio: INVEJAAAA!
 ->END
     
+=== tutorialBook ===
+Guia de Batalha da Guarda
+Este guia serve para ensinar os básicos do combate para todas as sentinelas do calabouço. Ignorar essas instruções pode ser fatal.
+Primeiro e acima de tudo, integridade física é tudo. Sempre mantenha uma distância adequada de seu atacante.
+Para atacar com sua espada, aperte o botão [etc]. Não sabe o que é isso? Bom, pois deveria.
+Lembre-se sempre que você apenas pode atacar na direção que está virado, pois é assim que colunas funcionam.
+Caso algum fugitivo tente ataca-lo com algum projétil, use seu escudo com o botão [etc2].
+O escudo também é útil contra inimigos que tentem chegar muito perto.
+->END
+
 === tutorialRoomEnd ===
-Kyo: Assim que eu entrei aqui, eu sabia que havia sentido um odor familiar. Inveja…
-Kyo: É O MESMO CHEIRO DE MORTE DE QUANDO VOCÊ DESTRUI MEU LAR, SEU DEMÔNIO MISERÁVEL!
-Kyo: Pelos meus amigos e família, é hoje que terei sua cabeça.
+Ultio: Assim que eu entrei aqui, eu sabia que havia sentido algo familiar. Inveja...
+Ultio: É a mesma sensação de morte que você deixou ao queimar meu vilarejo, seu demônio maldito!
+Ultio: Pelos meus amigos e família, é hoje que terei sua cabeça.
 ->END
 
 === diary1 ===
@@ -21,18 +31,18 @@ Kkk eae men bem interessante seu post aí como vc pode ver provocou varias risad
     
 === bossRoom ===
 Inveja: Você chegou. Vamos acabar com isso.
-Kyo: Por 3 anos eu te cacei. Por 3 malditos anos eu cortei todos da sua raça que encontrei.
-Kyo: É só isso que tem a dizer como últimas palavras?
+Ultio: Por 3 anos eu te cacei. Por 3 malditos anos eu cortei todos da sua raça que encontrei.
+Ultio: É só isso que tem a dizer como últimas palavras?
 Inveja: Ha. Gosto do que esse tempo fez a você. Pois bem, o que quer saber?
-Kyo: Motivos. Por que comigo? Por que minha família?
+Ultio: Motivos. Por que comigo? Por que minha família?
 Inveja: Por inveja. Você quer saber do que me chamam?
 Inveja: Senhor da Causalidade.
 Inveja: Eu vi a vida de um Kyo cercado por sua família e amigos, até o dia de sua morte. Um Kyo que superou grandes desafios e ganhou grandes recompensas.
 Inveja: Basicamente, uma vida próspera. Próspera até demais. 
 Inveja:É claro que eu precisei intervir.
-Kyo: Você… você destruiu minha vida...
-Kyo: Porque ela seria boa demais?
-Kyo: AAAAAAAAAAAAAAAAAAAAAAAAAUGH!!!
+Ultio: Você… você destruiu minha vida...
+Ultio: Porque ela seria boa demais?
+Ultio: AAAAAAAAAAAAAAAAAAAAAAAAAUGH!!!
 ->END
 
 === defeatedBoss ===

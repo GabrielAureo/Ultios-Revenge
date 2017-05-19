@@ -122,25 +122,25 @@ public class Player: MonoBehaviour, IEntity {
 	void Movement(){
         if (Input.GetKeyDown(KeyCode.Mouse2))
         {
-            if (rb.transform.position.x <= 6 && rb.transform.position.x >= 0.4 && rb.transform.position.y <= 4.6f && rb.transform.position.y >= -0.6f)
-            {
+            //if (rb.transform.position.x <= 6 && rb.transform.position.x >= 0.4 && rb.transform.position.y <= 4.6f && rb.transform.position.y >= -0.6f)
+           // {
                 StartCoroutine(Dash());
-            }
+            //}
         }
         else
         {
-           if(rb.transform.position.x <= 6 && rb.transform.position.x >= 0.4 && rb.transform.position.y <= 4.6f && rb.transform.position.y >= -0.6f && !dashing)
-            {
+          // if(rb.transform.position.x <= 6 && rb.transform.position.x >= 0.4 && rb.transform.position.y <= 4.6f && rb.transform.position.y >= -0.6f && !dashing)
+            //{
                 rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed;
                 
-            }
-            else
-            {
-                rb.velocity = new Vector2(0,0);
-                float positionX = Mathf.Clamp(rb.transform.position.x, 0.4f, 6f);
-                float positionY = Mathf.Clamp(rb.transform.position.y, -0.6f, 4.6f);
-                rb.transform.position = new Vector3(positionX, positionY, this.transform.position.z);
-            }
+            //}
+           // else
+            //{
+            //    rb.velocity = new Vector2(0,0);
+           //     float positionX = Mathf.Clamp(rb.transform.position.x, 0.4f, 6f);
+           //     float positionY = Mathf.Clamp(rb.transform.position.y, -0.6f, 4.6f);
+           //     rb.transform.position = new Vector3(positionX, positionY, this.transform.position.z);
+           // }
         }
     }
 

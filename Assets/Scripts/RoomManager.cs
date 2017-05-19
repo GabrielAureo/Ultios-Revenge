@@ -9,18 +9,33 @@ public class RoomManager : MonoBehaviour {
 	[SerializeField]
 	int enemies;
 
+	public List<DoorController> doors;
+
 	public GameObject diary;
 
 	// Use this for initialization
 	void Start () {
-		diary.SetActive(false);
+		story = GameObject.FindGameObjectWithTag("Story").GetComponent<GameStory>();
+
+		if(diary != null){
+			diary.SetActive(false);
+		}
+
+		foreach(GameObject door in GameObject.FindGameObjectsWithTag("Door")){
+			doors.Add(door.GetComponent<DoorController>());
+		}
+
 		enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        Debug.Log(enemies);
+
 		if(startRoomPath != ""){
 			if (!GameStory.reading) {
 				story.story.ChoosePathString (startRoomPath);
 				story.RefreshView ();
 			}
+		}
+
+		if(enemies == 0){
+			clearedRoom();
 		}
 	}
 	
@@ -29,20 +44,24 @@ public class RoomManager : MonoBehaviour {
     }
 
 	public void enemyKilled(){
+        Debug.Log("Enemy Killed");
         enemies--;
-        Debug.Log("Enemie Killed, the current number of enemies alive are : " + enemies);
-        if (enemies == 0){
-			clearedRoomDialog();
-			diary.SetActive(true);
+		if(enemies == 0){
+			clearedRoom();
+			if(diary != null)
+				diary.SetActive(true);
 		}
 	}
 
-	void clearedRoomDialog(){
+	void clearedRoom(){
 		if(endRoomPath != ""){
 			if (!GameStory.reading) {
 				story.story.ChoosePathString (endRoomPath);
 				story.RefreshView ();
 			}
+		}
+		foreach(DoorController door in doors){
+			door.openDoor();
 		}
 	}
 }
