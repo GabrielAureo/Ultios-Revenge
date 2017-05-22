@@ -7,6 +7,8 @@ public class Player: MonoBehaviour, IEntity {
 
     private Rigidbody2D rb;
 	private GameObject atkPivot;
+    private GameObject blockTrig;
+    private GameObject atkTrig;
     private SpriteRenderer sprite;
     public Image life;
 
@@ -34,15 +36,21 @@ public class Player: MonoBehaviour, IEntity {
     private bool setDamage;
     public float damageSpriteTime;
     private float backToDefault;
-    private bool cannotBeDamaged;
+    private float dashingTime;
+    private float dashingValue;
+    private float speedFixed;
+    private bool blocking;
 
     // Use this for initialization
     void Start () {
 		rb = this.gameObject.GetComponent<Rigidbody2D>();
         sprite = this.gameObject.GetComponent<SpriteRenderer>();
 		atkPivot = transform.GetChild(0).gameObject;
-		atkPivot.SetActive(false);
+        atkTrig = transform.GetChild(0).GetChild(0).gameObject;
+        blockTrig = transform.GetChild(0).GetChild(1).gameObject;
+        atkPivot.SetActive(false);
         animator = GetComponent<Animator>();
+        animator.SetFloat("blockway", 5f);
     }
 
     void Update(){
@@ -55,16 +63,30 @@ public class Player: MonoBehaviour, IEntity {
         Animation();
         Movement();
 		Combat();
-        Blocked();
+        if (atkTrig.activeSelf == false)
+        {
+            Blocked();
+        }
+        speedDecressing();
+        //Debug.Log(rb.transform.position);
     }
 
     void Blocked()
     {
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            cannotBeDamaged = true;
+            atkPivot.SetActive(true);
+            blockTrig.SetActive(true);
+            animator.SetFloat("block", 1f);
+            animator.SetFloat("walk", 0f);
+            blocking = true;
         }
-        else { cannotBeDamaged = false; }
+        else if(Input.GetKeyUp(KeyCode.Mouse1)) {
+            blockTrig.SetActive(false);
+            atkPivot.SetActive(false);
+            animator.SetFloat("block", -1f);
+            blocking = false;
+        }
     }
 
     void Animation()
@@ -120,27 +142,35 @@ public class Player: MonoBehaviour, IEntity {
     }
 
 	void Movement(){
-        if (Input.GetKeyDown(KeyCode.Mouse2))
+        if (!blocking)
         {
-            //if (rb.transform.position.x <= 6 && rb.transform.position.x >= 0.4 && rb.transform.position.y <= 4.6f && rb.transform.position.y >= -0.6f)
-           // {
+            if (Input.GetKeyDown(KeyCode.Mouse2))
+            {
+                //if (rb.transform.position.x <= 6 && rb.transform.position.x >= 0.4 && rb.transform.position.y <= 4.6f && rb.transform.position.y >= -0.6f)
+                // {
                 StartCoroutine(Dash());
-            //}
-        }
-        else
-        {
-          // if(rb.transform.position.x <= 6 && rb.transform.position.x >= 0.4 && rb.transform.position.y <= 4.6f && rb.transform.position.y >= -0.6f && !dashing)
-            //{
+                //}
+            }
+            else
+            {
+
+                // if(rb.transform.position.x <= 6 && rb.transform.position.x >= 0.4 && rb.transform.position.y <= 4.6f && rb.transform.position.y >= -0.6f && !dashing)
+                //{
                 rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed;
-                
-            //}
-           // else
-            //{
-            //    rb.velocity = new Vector2(0,0);
-           //     float positionX = Mathf.Clamp(rb.transform.position.x, 0.4f, 6f);
-           //     float positionY = Mathf.Clamp(rb.transform.position.y, -0.6f, 4.6f);
-           //     rb.transform.position = new Vector3(positionX, positionY, this.transform.position.z);
-           // }
+                //}
+                // else
+                //{
+                //    rb.velocity = new Vector2(0,0);
+                //     float positionX = Mathf.Clamp(rb.transform.position.x, 0.4f, 6f);
+                //     float positionY = Mathf.Clamp(rb.transform.position.y, -0.6f, 4.6f);
+                //     rb.transform.position = new Vector3(positionX, positionY, this.transform.position.z);
+                // }
+
+
+            }
+        }else
+        {
+            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * 0;
         }
     }
 
@@ -149,19 +179,26 @@ public class Player: MonoBehaviour, IEntity {
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("walk_right"))
         {
 			atkPivot.transform.eulerAngles = new Vector3(0,0,270);
-		}if(animator.GetCurrentAnimatorStateInfo(0).IsName("walk_left"))
+            animator.SetFloat("blockway", 3f);
+        }
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("walk_left"))
         {
 			atkPivot.transform.eulerAngles = new Vector3(0,0,90);
-		}if(animator.GetCurrentAnimatorStateInfo(0).IsName("walk_upper"))
+            animator.SetFloat("blockway", 1f);
+        }
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("walk_upper"))
         {
 			atkPivot.transform.eulerAngles = new Vector3(0,0,0);
-		}if(animator.GetCurrentAnimatorStateInfo(0).IsName("walk_bottom"))
+            animator.SetFloat("blockway", 5f);
+        }
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("walk_bottom"))
         {
 			atkPivot.transform.eulerAngles = new Vector3(0,0,180);
-		}
+            animator.SetFloat("blockway", 7f);
+        }
 
 
-		if (Time.time > nextAtk && Input.GetButton("Fire1")) {
+        if (Time.time > nextAtk && Input.GetButton("Fire1")) {
             nextAtk = Time.time + atkCooldown;
 			StartCoroutine(Attack());
             if (Time.time > atkSpriteCount && atkPivot.transform.eulerAngles.z == 180)
@@ -197,16 +234,35 @@ public class Player: MonoBehaviour, IEntity {
 
 	IEnumerator Attack()
     {
+        blockTrig.SetActive(false);
 		atkPivot.SetActive(true);
-		yield return new WaitForSeconds(atkDuration);
-		atkPivot.SetActive(false);
+        atkTrig.SetActive(true);
+        animator.SetFloat("block", -1f);
+        yield return new WaitForSeconds(atkDuration);
+        atkTrig.SetActive(false);
+        atkPivot.SetActive(false);
 	}
 
     IEnumerator Dash()
     {
-        dashing = true;
-        yield return rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed * 10;
-        dashing = false;
+        if (!dashing)
+        {
+            dashing = true;
+            speed = speed * 4;
+            speedFixed = speed;
+            yield return new WaitForSeconds(0.2f);
+            speed = speed / 4;
+            dashing = false;
+        }
+    }
+
+    public void speedDecressing()
+    {
+        if (dashing)
+        {
+            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speedFixed;
+            speedFixed = speed - (speedFixed / 2);
+        }
     }
 
 	public float getHealth(){
@@ -218,7 +274,7 @@ public class Player: MonoBehaviour, IEntity {
 	}
 
 	public void setHealth(float damage){
-        if (!cannotBeDamaged && Time.time > backToDefault)
+        if (Time.time > backToDefault)
         {
             health -= damage;
             life.fillAmount -= 0.1f;

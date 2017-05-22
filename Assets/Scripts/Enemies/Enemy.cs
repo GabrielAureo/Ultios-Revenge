@@ -14,6 +14,7 @@ public abstract class Enemy : MonoBehaviour, IEntity {
 	public float damage;
 	public float speed;
 	private bool shouldPatrol = true;
+    private bool shouldRun = false;
 
     public float damageSpriteTime;
     private float backToDefault;
@@ -32,8 +33,14 @@ public abstract class Enemy : MonoBehaviour, IEntity {
 			if(shouldPatrol){
 				Patrol();
 			}else{
-				Attack();
-			}	
+                if (!shouldRun)
+                {
+                    Attack();
+                }else
+                {
+                    Run();
+                }
+            }	
 		}
         SpriteRend();
 	}
@@ -42,7 +49,9 @@ public abstract class Enemy : MonoBehaviour, IEntity {
 
 	protected abstract void Attack ();
 
-	public void playerSighted(){
+    protected abstract void Run();
+
+    public void playerSighted(){
 		shouldPatrol = false;
 	}
 
@@ -68,6 +77,7 @@ public abstract class Enemy : MonoBehaviour, IEntity {
     }
 
     public void setHealth(float damage){
+        shouldRun = true;
 		health -= damage;
         sprite.color = Color.red;
         backToDefault = Time.time + damageSpriteTime;
