@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour {
 
-	static bool gameOver = false;
+	public static bool gameOver = false;
 	Animator anim;
 
 	void Awake(){

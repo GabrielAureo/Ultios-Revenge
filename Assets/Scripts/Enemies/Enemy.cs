@@ -29,7 +29,7 @@ public abstract class Enemy : MonoBehaviour, IEntity {
 	
 	// Update is called once per frame
 	void Update () {
-        if(!GameStory.reading){
+        if(!GameStory.reading || !GameOver.gameOver){
 			if(shouldPatrol){
 				Patrol();
 			}else{

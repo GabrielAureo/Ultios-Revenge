@@ -54,7 +54,7 @@ public class Player: MonoBehaviour, IEntity {
     }
 
     void Update(){
-		if (GameStory.reading) {
+		if (GameStory.reading || GameOver.gameOver) {
 			rb.velocity = Vector2.zero;
 			return;
 		}
