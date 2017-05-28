@@ -4,11 +4,7 @@ Ultio: Heh. Não é nada que umas moedas de ouros e ração não resolvam para a
 Ultio: E eu ainda tenho a chance de encontrar ele… 
 ->END
 
-=== tutorialRoomStart ===
-Ultio: Não pode ser! Essas criaturas…
-Ultio: INVEJAAAA!
-->END
-    
+
 === tutorialBook ===
 Diary: Guia de Batalha da Guarda
 Diary: Este guia serve para ensinar os básicos do combate para todas as sentinelas do calabouço. Ignorar essas instruções pode ser fatal.
@@ -17,8 +13,16 @@ Diary: Para atacar com sua espada, aperte o botão [etc]. Não sabe o que é iss
 Diary: Lembre-se sempre que você apenas pode atacar na direção que está virado, pois é assim que colunas funcionam.
 Diary: Caso algum fugitivo tente ataca-lo com algum projétil, use seu escudo com o botão [etc2].
 Diary: O escudo também é útil contra inimigos que tentem chegar muito perto.
+Ultio: Um guia de batalha, huh?
+Ultio: Parece que os guardas não fizeram um bom trabalho em aprendê-lo, ou então não teriam sido massacrados pelos demônios.
 ->END
 
+
+=== tutorialRoomStart ===
+Ultio: Não pode ser! Essas criaturas…
+Ultio: INVEJAAAA!
+->END
+    
 === tutorialRoomEnd ===
 Ultio: Assim que eu entrei aqui, eu sabia que havia sentido algo familiar. Inveja...
 Ultio: É a mesma sensação de morte que você deixou ao queimar meu vilarejo, seu demônio maldito!
@@ -26,7 +30,15 @@ Ultio: Pelos meus amigos e família, é hoje que terei sua cabeça.
 ->END
 
 === diary1 ===
-Diary: Kkk eae men bem interessante seu post aí como vc pode ver provocou varias risadas entre o pessoal desse grupo mais eu venho lhe trazer um ultimato aqui que me foi dito e parece que esse seu meme aí é um kibe da south america memes mano n queria falar assim mas olha foi a informação que me passaram né então se eu fosse você eu apagava porque o pessoal da south america memes é brabo
+Diary: Você está lendo o primeiro diário. Boa man.
+->END
+
+=== diary2 ===
+Diary: Você está lendo o segundo diário. Mais um para chegar ao chefe!
+->END
+
+=== diary3 ===
+Diary: Você está lendo o terceiro diário. Vá enfrentar o boss!
 ->END
     
 === bossRoomStart ===

@@ -5,20 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class DoorController : MonoBehaviour {
 
-	public string roomToLoad;
+	[SerializeField]
+	string roomToLoad;
+	[SerializeField]
 	Collider2D trigger;
-
+	[SerializeField]
 	Animator anim;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		trigger = gameObject.GetComponent<Collider2D>();
 		anim = gameObject.GetComponent<Animator>();
+
+	}
+
+	public void closeDoor(){
 		trigger.enabled = false;
-
 		anim.Play("Close Door");
-
-		
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
@@ -30,5 +33,9 @@ public class DoorController : MonoBehaviour {
 	public void openDoor(){
 		trigger.enabled = true;
 		anim.Play("Open Door");
+	}
+
+	public void setRoom(string room){
+		roomToLoad = room;
 	}
 }

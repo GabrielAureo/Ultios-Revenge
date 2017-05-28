@@ -24,9 +24,7 @@ public class InteractionController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col){	
 		Interactable root = col.transform.root.GetComponent<Interactable>();
 		if(root != null){
-			if (root.CompareTag("Interactable")){
-				targetInteractable = root;
-			}
+			targetInteractable = root;
 		}
 	}
 

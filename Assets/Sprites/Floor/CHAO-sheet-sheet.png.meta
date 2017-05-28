@@ -1,13 +1,18 @@
 fileFormatVersion: 2
-guid: c82d6926fee770b4ca436f0c3b1f96ce
-timeCreated: 1495884561
+guid: fdc94dccd8e204b4db92ac810e6f6905
+timeCreated: 1495883822
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: door_0
-    21300002: door_1
-    21300004: door_2
-    21300006: door_3
+    21300000: CHAO-sheet-sheet_0
+    21300002: CHAO-sheet-sheet_1
+    21300004: CHAO-sheet-sheet_2
+    21300006: CHAO-sheet-sheet_3
+    21300008: CHAO-sheet-sheet_4
+    21300010: CHAO-sheet-sheet_5
+    21300012: CHAO-sheet-sheet_6
+    21300014: CHAO-sheet-sheet_7
+    21300016: CHAO-sheet-sheet_8
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -44,7 +49,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 52.3
+  spritePixelsToUnits: 52.2
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -74,7 +79,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: door_0
+      name: CHAO-sheet-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 176
+        width: 84
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHAO-sheet-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 176
+        width: 84
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHAO-sheet-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 176
+        width: 84
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHAO-sheet-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 88
+        width: 84
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHAO-sheet-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 88
+        width: 84
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHAO-sheet-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 88
+        width: 84
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CHAO-sheet-sheet_6
       rect:
         serializedVersion: 2
         x: 0
@@ -87,10 +170,10 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: door_1
+      name: CHAO-sheet-sheet_7
       rect:
         serializedVersion: 2
-        x: 84
+        x: 88
         y: 0
         width: 84
         height: 84
@@ -100,23 +183,10 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: door_2
+      name: CHAO-sheet-sheet_8
       rect:
         serializedVersion: 2
-        x: 168
-        y: 0
-        width: 84
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: door_3
-      rect:
-        serializedVersion: 2
-        x: 252
+        x: 176
         y: 0
         width: 84
         height: 84

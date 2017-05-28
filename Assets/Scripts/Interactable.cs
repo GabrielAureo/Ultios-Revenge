@@ -7,8 +7,11 @@ public class Interactable : MonoBehaviour {
 
 	public string storyPath;
 	public GameStory story;
+	void Awake(){
+		story = GameObject.FindGameObjectWithTag("Story").GetComponent<GameStory>();
+	}
 
-	public void Interact(){
+	public virtual void Interact(){
 		if(!GameStory.reading){
 			story.story.ChoosePathString(storyPath);
 			story.RefreshView();

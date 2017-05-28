@@ -3,37 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour {
-	public GameStory story;
+	GameStory story;
 	public string startRoomPath;
 	public string endRoomPath;
+
 	[SerializeField]
 	int enemies;
-
 	public List<DoorController> doors;
-
 	public GameObject diary;
-
+	List <string> Rooms = new List<string>{"First Room", "Second Room", "Third Room", "Fourth Room"};
+	static string prevRoom;
+	public string nextRoom;
 	// Use this for initialization
-	void Start () {
-		story = GameObject.FindGameObjectWithTag("Story").GetComponent<GameStory>();
 
+	void Awake(){
+		story = GameObject.FindGameObjectWithTag("Story").GetComponent<GameStory>();
+		diary = GameObject.FindGameObjectWithTag("Diary");
+		enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+	}
+	void Start () {
 		if(diary != null){
 			diary.SetActive(false);
 		}
 
 		foreach(GameObject door in GameObject.FindGameObjectsWithTag("Door")){
-			doors.Add(door.GetComponent<DoorController>());
+			DoorController doorscript = door.GetComponent<DoorController>();
+			doorscript.closeDoor();
+			doors.Add(doorscript);
 		}
-
-		enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
-
 		if(startRoomPath != ""){
 			if (!GameStory.reading) {
 				story.story.ChoosePathString (startRoomPath);
 				story.RefreshView ();
 			}
 		}
-
 		if(enemies == 0){
 			clearedRoom();
 		}
@@ -60,8 +63,46 @@ public class RoomManager : MonoBehaviour {
 				story.RefreshView ();
 			}
 		}
+		openDoors();
+		if(diary != null){
+			revealDiary();
+		}
+
+	}
+
+
+	void openDoors(){
 		foreach(DoorController door in doors){
+			if(string.IsNullOrEmpty(nextRoom)){
+				nextRoom = pickARoom();
+			}
+			door.setRoom(nextRoom);
 			door.openDoor();
 		}
 	}
+	string pickARoom(){
+		string rndRoom;
+		List<string> validRooms = Rooms;
+
+		Debug.Log(prevRoom);
+
+		validRooms.Remove(prevRoom);
+		int rndIndex = Random.Range(0,(validRooms.Count));
+
+		prevRoom = validRooms[rndIndex];
+		
+		rndRoom = prevRoom;
+
+		return rndRoom;
+	}
+
+	public void setDoors(string room){
+		nextRoom = room;
+		openDoors();
+	}
+
+	void revealDiary(){
+		diary.SetActive(true);
+	}
+
 }

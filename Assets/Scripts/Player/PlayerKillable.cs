@@ -65,6 +65,7 @@ public class PlayerKillable : MonoBehaviour, IKillable {
     }
 
 	public void Die(){
-        SceneManager.LoadScene("Lose");
+        Debug.Log("Morreu");
+        GameObject.FindGameObjectWithTag("Game Over").GetComponent<GameOver>().enable();
     }
 }
