@@ -21,7 +21,7 @@ public class EnemyKillable : MonoBehaviour, IKillable {
         enemy = gameObject.GetComponent<IEntity>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         inDamage = 0;
-        playerPivot = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject;
+        playerPivot = GameObject.FindGameObjectWithTag("Player").transform.root.GetChild(0).gameObject;
     }
 
     public void takeDamage(float damage, int i)

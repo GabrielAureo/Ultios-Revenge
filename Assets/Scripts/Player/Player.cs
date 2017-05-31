@@ -10,7 +10,7 @@ public class Player: MonoBehaviour, IEntity {
     private GameObject blockTrig;
     private GameObject atkTrig;
     private SpriteRenderer sprite;
-    public Image life;
+    private Image life;
 
 	public float health;
 	public float damage;
@@ -56,6 +56,7 @@ public class Player: MonoBehaviour, IEntity {
 		atkPivot = transform.GetChild(0).gameObject;
         atkTrig = transform.GetChild(0).GetChild(0).gameObject;
         blockTrig = transform.GetChild(0).GetChild(1).gameObject;
+        life = GameObject.FindGameObjectWithTag("Canvas").transform.root.GetChild(1).gameObject.GetComponent<Image>();
         atkPivot.SetActive(false);
         animator = GetComponent<Animator>();
         animator.SetFloat("blockway", 5f);
