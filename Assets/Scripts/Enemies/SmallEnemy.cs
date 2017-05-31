@@ -27,6 +27,11 @@ public class SmallEnemy : Enemy {
         }
     }
 
+    protected override void bum()
+    {
+     //  
+    }
+
     IEnumerator Shoting()
     {
         isShoting = true;

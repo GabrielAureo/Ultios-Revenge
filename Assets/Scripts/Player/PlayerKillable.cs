@@ -41,26 +41,28 @@ public class PlayerKillable : MonoBehaviour, IKillable {
     IEnumerator ThrowBack(int findDamage)
     {
         pushingBack = true;
+        player.setKnockingBack();
         if (findDamage == 1)
         {
-            Vector3 newPosition = new Vector3(rb.transform.position.x + 0.8f, rb.transform.position.y, rb.transform.position.z);
-            yield return rb.transform.position = newPosition;
+            player.setThrowing(1);
+            yield return new WaitForSeconds(damageTime);
         }
         else if (findDamage == 2)
         {
-            Vector3 newPosition = new Vector3(rb.transform.position.x, rb.transform.position.y + 0.8f, rb.transform.position.z);
-            yield return rb.transform.position = newPosition;
+            player.setThrowing(2);
+            yield return new WaitForSeconds(damageTime);
         }
         else if (findDamage == 3)
         {
-            Vector3 newPosition = new Vector3(rb.transform.position.x - 0.8f, rb.transform.position.y, rb.transform.position.z);
-            yield return rb.transform.position = newPosition;
+            player.setThrowing(3);
+            yield return new WaitForSeconds(damageTime);
         }
         else if (findDamage == 4)
         {
-            Vector3 newPosition = new Vector3(rb.transform.position.x, rb.transform.position.y - 0.8f, rb.transform.position.z);
-            yield return rb.transform.position = newPosition;
+            player.setThrowing(4);
+            yield return new WaitForSeconds(damageTime);
         }
+        player.setKnockingBack();
         pushingBack = false;
     }
 

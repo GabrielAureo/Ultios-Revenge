@@ -41,6 +41,14 @@ public class Player: MonoBehaviour, IEntity {
     private float speedFixed;
     private bool blocking;
 
+    private bool knockingBack;
+    private int throwingInteger;
+    public int pushingDistance;
+
+    private int moving;
+    private way state;
+    enum way {left, right, bottom, upper, stop };
+
     // Use this for initialization
     void Start () {
 		rb = this.gameObject.GetComponent<Rigidbody2D>();
@@ -51,6 +59,8 @@ public class Player: MonoBehaviour, IEntity {
         atkPivot.SetActive(false);
         animator = GetComponent<Animator>();
         animator.SetFloat("blockway", 5f);
+        moving = 0;
+        state = way.stop;
     }
 
     void Update(){
@@ -60,6 +70,7 @@ public class Player: MonoBehaviour, IEntity {
 		}
 
         SpriteRend();
+        whichWay();
         Animation();
         Movement();
 		Combat();
@@ -67,8 +78,7 @@ public class Player: MonoBehaviour, IEntity {
         {
             Blocked();
         }
-        speedDecressing();
-        //Debug.Log(rb.transform.position);
+        //speedDecressing();
     }
 
     void Blocked()
@@ -89,6 +99,106 @@ public class Player: MonoBehaviour, IEntity {
         }
     }
 
+    void whichWay()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            state = way.upper;
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            state = way.bottom;
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            state = way.left;
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            state = way.right;
+        }
+        if(Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0 && !Input.anyKey)
+        {
+            state = way.stop;
+        }
+
+        if(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+        {
+            moving = 1;
+        }
+
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+            moving = 2;
+        }
+
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+        {
+            moving = 3;
+        }
+
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+        {
+            moving = 4;
+        }
+
+        if (moving == 1)
+        {
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                state = way.right;
+                moving = 0;
+            }
+            else if (Input.GetKeyUp(KeyCode.D))
+            {
+                state = way.upper;
+                moving = 0;
+            }
+        }
+
+        if (moving == 2)
+        {
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                state = way.left;
+                moving = 0;
+            }
+            else if (Input.GetKeyUp(KeyCode.A))
+            {
+                state = way.upper;
+                moving = 0;
+            }
+        }
+
+        if (moving == 3)
+        {
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                state = way.right;
+                moving = 0;
+            }
+            else if (Input.GetKeyUp(KeyCode.D))
+            {
+                state = way.bottom;
+                moving = 0;
+            }
+        }
+
+        if (moving == 4)
+        {
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                state = way.left;
+                moving = 0;
+            }
+            else if (Input.GetKeyUp(KeyCode.A))
+            {
+                state = way.bottom;
+                moving = 0;
+            }
+        }
+    }
+
     void Animation()
     {
      
@@ -98,77 +208,68 @@ public class Player: MonoBehaviour, IEntity {
         animator.SetFloat("attackLeft", (nextAtkLeftSprite - Time.time));
         animator.SetBool("downMovement", false);
 
-        if (Input.GetAxisRaw("Vertical") > 0)
+        if (Input.GetAxisRaw("Vertical") > 0 && state == way.upper)
         {
             animator.SetFloat("stay", 0f);
             animator.SetFloat("walk", 1f);
         }
-        else if (Input.GetAxisRaw("Horizontal") < 0)
+        if (Input.GetAxisRaw("Horizontal") < 0 && state == way.left)
         {
             animator.SetFloat("stay", 0f);
             animator.SetFloat("walk", 7f);
         }
-        else if (Input.GetAxisRaw("Vertical") < 0)
+        if (Input.GetAxisRaw("Vertical") < 0 && state == way.bottom)
         {
             animator.SetFloat("stay", 0f);
             animator.SetFloat("walk", 5f);
         }
-        else if (Input.GetAxisRaw("Horizontal") > 0)
+        if (Input.GetAxisRaw("Horizontal") > 0 && state == way.right)
         {
             animator.SetFloat("stay", 0f);
             animator.SetFloat("walk", 3f);
         }
-        else
+        if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0 && state == way.stop)
         {
             animator.SetFloat("stay", 2f);
             animator.SetFloat("walk", 0f);
-        }
-        if (Input.GetAxisRaw("Horizontal") < 0 && Input.GetAxisRaw("Vertical") < 0)
-        {
-            animator.SetBool("downMovement", true);
-        }
-        else if(Input.GetAxisRaw("Horizontal") > 0 && Input.GetAxisRaw("Vertical") < 0)
-        {
-            animator.SetBool("downMovement", true);
-        }
-        else if (Input.GetAxisRaw("Horizontal") > 0 && Input.GetAxisRaw("Vertical") > 0)
-        {
-            animator.SetBool("downMovement", true);
-        }
-        else if (Input.GetAxisRaw("Horizontal") < 0 && Input.GetAxisRaw("Vertical") > 0)
-        {
-            animator.SetBool("downMovement", true);
         }
     }
 
 	void Movement(){
         if (!blocking)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse2))
+            if (!knockingBack)
             {
-                //if (rb.transform.position.x <= 6 && rb.transform.position.x >= 0.4 && rb.transform.position.y <= 4.6f && rb.transform.position.y >= -0.6f)
-                // {
-                StartCoroutine(Dash());
-                //}
+                if (Input.GetKeyDown(KeyCode.Mouse2))
+                {
+                    StartCoroutine(Dash());
+                }
+                else
+                {
+                    rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed;
+                }
             }
-            else
+            else if (knockingBack)
             {
-
-                // if(rb.transform.position.x <= 6 && rb.transform.position.x >= 0.4 && rb.transform.position.y <= 4.6f && rb.transform.position.y >= -0.6f && !dashing)
-                //{
-                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed;
-                //}
-                // else
-                //{
-                //    rb.velocity = new Vector2(0,0);
-                //     float positionX = Mathf.Clamp(rb.transform.position.x, 0.4f, 6f);
-                //     float positionY = Mathf.Clamp(rb.transform.position.y, -0.6f, 4.6f);
-                //     rb.transform.position = new Vector3(positionX, positionY, this.transform.position.z);
-                // }
-
-
+                if (throwingInteger == 1)
+                {
+                    rb.velocity = new Vector2(pushingDistance, 0) * speed;
+                }
+                else if (throwingInteger == 2)
+                {
+                    rb.velocity = new Vector2(0, pushingDistance) * speed;
+                }
+                else if (throwingInteger == 3)
+                {
+                    rb.velocity = new Vector2(-pushingDistance, 0) * speed;
+                }
+                else if (throwingInteger == 4)
+                {
+                    rb.velocity = new Vector2(0, -pushingDistance) * speed;
+                }
             }
-        }else
+        }
+        else if (blocking)
         {
             rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * 0;
         }
@@ -249,19 +350,9 @@ public class Player: MonoBehaviour, IEntity {
         {
             dashing = true;
             speed = speed * 4;
-            speedFixed = speed;
             yield return new WaitForSeconds(0.2f);
             speed = speed / 4;
             dashing = false;
-        }
-    }
-
-    public void speedDecressing()
-    {
-        if (dashing)
-        {
-            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speedFixed;
-            speedFixed = speed - (speedFixed / 2);
         }
     }
 
@@ -272,6 +363,21 @@ public class Player: MonoBehaviour, IEntity {
 	public float getDamage(){
 		return damage;
 	}
+
+    public void setThrowing(int i)
+    {
+        throwingInteger = i;
+    }
+
+
+    public void setKnockingBack()
+    {
+        if (!knockingBack)      { knockingBack = true; }
+        else {
+            throwingInteger = 0;
+            knockingBack = false;
+        }
+    }
 
 	public void setHealth(float damage){
         if (Time.time > backToDefault)

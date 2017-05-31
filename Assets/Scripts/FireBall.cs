@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBall : AttackTrigger
+public class FireBall : MonoBehaviour
 {
     public GameObject playerDamage;
     private GameObject rb;
     private int value;
+    public int damage;
 
-    override protected void OnTriggerEnter2D(Collider2D col)
+   protected void OnTriggerEnter2D(Collider2D col)
     {
         value = 0;
         if (col.CompareTag("Player"))

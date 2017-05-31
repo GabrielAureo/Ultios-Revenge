@@ -21,6 +21,15 @@ public class SharpObjects : MonoBehaviour, IEntity {
         //
     }
 
+    public void setKnockingBack()
+    {
+        //
+    }
+    public void setThrowing(int i)
+    {
+        //
+    }
+
     // Use this for initialization
     void Start () {
 		

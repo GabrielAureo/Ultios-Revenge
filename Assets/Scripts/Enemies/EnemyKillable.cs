@@ -7,6 +7,7 @@ public class EnemyKillable : MonoBehaviour, IKillable {
 	public IEntity enemy;
 	public RoomManager room;
     public Rigidbody2D rb;
+    private GameObject playerPivot;
 
     public bool pushingBack;
 
@@ -20,6 +21,7 @@ public class EnemyKillable : MonoBehaviour, IKillable {
         enemy = gameObject.GetComponent<IEntity>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         inDamage = 0;
+        playerPivot = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject;
     }
 
     public void takeDamage(float damage, int i)
@@ -52,23 +54,24 @@ public class EnemyKillable : MonoBehaviour, IKillable {
 
     IEnumerator ThrowBack(int findDamage)
     {
+        Debug.Log("Quied" + playerPivot.transform.rotation.z);
         pushingBack = true;
-        if (findDamage == 1)
+        if (playerPivot.transform.eulerAngles.z == 270)
         {
             Vector3 newPosition = new Vector3(rb.transform.position.x + 0.8f, rb.transform.position.y, rb.transform.position.z);
             yield return rb.transform.position = newPosition;
         }
-        else if (findDamage == 4)
+        else if (playerPivot.transform.eulerAngles.z == 0)
         {
             Vector3 newPosition = new Vector3(rb.transform.position.x, rb.transform.position.y + 0.8f, rb.transform.position.z);
             yield return rb.transform.position = newPosition;
         }
-        else if (findDamage == 2)
+        else if (playerPivot.transform.eulerAngles.z == 90)
         {
             Vector3 newPosition = new Vector3(rb.transform.position.x - 0.8f, rb.transform.position.y, rb.transform.position.z);
             yield return rb.transform.position = newPosition;
         }
-        else if (findDamage == 3)
+        else if (playerPivot.transform.eulerAngles.z == 180)
         {
             Vector3 newPosition = new Vector3(rb.transform.position.x, rb.transform.position.y - 0.8f, rb.transform.position.z);
             yield return rb.transform.position = newPosition;

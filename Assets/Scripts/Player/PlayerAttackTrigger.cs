@@ -6,7 +6,7 @@ public class PlayerAttackTrigger : AttackTrigger {
 
     override protected void OnTriggerEnter2D(Collider2D col){
 		if (col.CompareTag("Enemy")) {
-            col.transform.GetComponent<SquidDamage>().getCol(col, damage);
+            col.transform.GetComponent<MonsterDamage>().getCol(col, damage);
 		}
 	}
    

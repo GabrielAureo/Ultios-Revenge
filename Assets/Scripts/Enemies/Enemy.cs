@@ -7,6 +7,7 @@ public abstract class Enemy : MonoBehaviour, IEntity {
 	protected Rigidbody2D rb;
 	protected GameObject player;
 	protected GameStory story;
+    protected Animator anim;
 
     private SpriteRenderer sprite;
 
@@ -15,6 +16,9 @@ public abstract class Enemy : MonoBehaviour, IEntity {
 	public float speed;
 	private bool shouldPatrol = true;
     private bool shouldRun = false;
+
+    private float xPos;
+    private bool isToFlip = false;
 
     public float damageSpriteTime;
     private float backToDefault;
@@ -25,6 +29,8 @@ public abstract class Enemy : MonoBehaviour, IEntity {
         sprite = this.gameObject.GetComponent<SpriteRenderer>();
         rb = gameObject.GetComponent<Rigidbody2D>();
 		story = GameObject.FindGameObjectWithTag("Story").GetComponent<GameStory>();
+        anim = this.gameObject.GetComponent<Animator>();
+        xPos = rb.transform.position.x;
 	}
 	
 	// Update is called once per frame
@@ -42,6 +48,17 @@ public abstract class Enemy : MonoBehaviour, IEntity {
                 }
             }	
 		}
+        if(xPos < rb.transform.position.x && !isToFlip)
+        {
+            isToFlip = true;
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if(xPos > rb.transform.position.x && isToFlip)
+        {
+            isToFlip = false;
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+        xPos = rb.transform.position.x;
         SpriteRend();
 	}
 
@@ -68,6 +85,16 @@ public abstract class Enemy : MonoBehaviour, IEntity {
 		return damage;
 	}
 
+    public void setKnockingBack()
+    {
+
+    }
+
+    public void setThrowing(int i)
+    {
+
+    }
+
     void SpriteRend()
     {
         if (Time.time > backToDefault)
@@ -77,10 +104,13 @@ public abstract class Enemy : MonoBehaviour, IEntity {
     }
 
     public void setHealth(float damage){
+        bum();
         shouldRun = true;
 		health -= damage;
         sprite.color = Color.red;
         backToDefault = Time.time + damageSpriteTime;
     }
+
+    protected abstract void bum();
 
 }
