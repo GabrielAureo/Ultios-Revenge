@@ -23,7 +23,7 @@ public class FireBall : MonoBehaviour
             rb = this.transform.root.gameObject;
             Destroy(rb);
         }
-        else if (col.CompareTag("Block"))
+        else if (col.CompareTag("Block") || col.CompareTag("Wall"))
         {
             rb = this.transform.root.gameObject;
             Destroy(rb);

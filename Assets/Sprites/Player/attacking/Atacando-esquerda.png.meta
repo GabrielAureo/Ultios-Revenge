@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 129fa5076beeeab4997b4af807b701f0
-timeCreated: 1494958179
+guid: c558af895af6262419e6da0842fc67b4
+timeCreated: 1496270201
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: atacando-Sheet_0
-    21300002: atacando-Sheet_1
-    21300004: atacando-Sheet_2
-    21300006: atacando-Sheet_3
-    21300008: atacando-Sheet_4
+    21300000: Atacando-esquerda_0
+    21300002: Atacando-esquerda_1
+    21300004: Atacando-esquerda_2
+    21300006: Atacando-esquerda_3
+    21300008: Atacando-esquerda_4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -75,65 +75,65 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: atacando-Sheet_0
+      name: Atacando-esquerda_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 51
-        height: 74
+        width: 50
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: atacando-Sheet_1
+      name: Atacando-esquerda_1
       rect:
         serializedVersion: 2
-        x: 51
+        x: 50
         y: 0
-        width: 51
-        height: 74
+        width: 50
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: atacando-Sheet_2
+      name: Atacando-esquerda_2
       rect:
         serializedVersion: 2
-        x: 102
+        x: 100
         y: 0
-        width: 51
-        height: 74
+        width: 50
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: atacando-Sheet_3
+      name: Atacando-esquerda_3
       rect:
         serializedVersion: 2
-        x: 153
+        x: 150
         y: 0
-        width: 51
-        height: 74
+        width: 50
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: atacando-Sheet_4
+      name: Atacando-esquerda_4
       rect:
         serializedVersion: 2
-        x: 204
+        x: 200
         y: 0
-        width: 51
-        height: 74
+        width: 50
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

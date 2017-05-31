@@ -1,14 +1,13 @@
 fileFormatVersion: 2
-guid: da3a799bee36ef64c8bc86ce936e5c41
-timeCreated: 1494964665
+guid: 7c08c17c7d9cd6748a8cc35adac90c21
+timeCreated: 1496269693
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Atacando-esquerda-Sheet_0
-    21300002: Atacando-esquerda-Sheet_1
-    21300004: Atacando-esquerda-Sheet_2
-    21300006: Atacando-esquerda-Sheet_3
-    21300008: Atacando-esquerda-Sheet_4
+    21300000: envy_0
+    21300002: envy_1
+    21300004: envy_2
+    21300006: envy_3
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -45,7 +44,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 40
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -75,65 +74,52 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Atacando-esquerda-Sheet_0
+      name: envy_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 57
-        height: 59
+        width: 140
+        height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Atacando-esquerda-Sheet_1
+      name: envy_1
       rect:
         serializedVersion: 2
-        x: 57
+        x: 140
         y: 0
-        width: 57
-        height: 59
+        width: 140
+        height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Atacando-esquerda-Sheet_2
+      name: envy_2
       rect:
         serializedVersion: 2
-        x: 114
+        x: 280
         y: 0
-        width: 57
-        height: 59
+        width: 140
+        height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Atacando-esquerda-Sheet_3
+      name: envy_3
       rect:
         serializedVersion: 2
-        x: 171
+        x: 420
         y: 0
-        width: 57
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Atacando-esquerda-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 228
-        y: 0
-        width: 57
-        height: 59
+        width: 140
+        height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 43287c39f5c5f9643aece0d0e0ca4be0
-timeCreated: 1494964703
+guid: 151052ec8fffb1848aaf740b277f9885
+timeCreated: 1496270385
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: atacando-direita-Sheet_0
-    21300002: atacando-direita-Sheet_1
-    21300004: atacando-direita-Sheet_2
-    21300006: atacando-direita-Sheet_3
-    21300008: atacando-direita-Sheet_4
+    21300000: Atacando-costas_0
+    21300002: Atacando-costas_1
+    21300004: Atacando-costas_2
+    21300006: Atacando-costas_3
+    21300008: Atacando-costas_4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -75,65 +75,65 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: atacando-direita-Sheet_0
+      name: Atacando-costas_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 42
-        height: 57
+        width: 53
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: atacando-direita-Sheet_1
+      name: Atacando-costas_1
       rect:
         serializedVersion: 2
-        x: 42
+        x: 53
         y: 0
-        width: 42
-        height: 57
+        width: 53
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: atacando-direita-Sheet_2
+      name: Atacando-costas_2
       rect:
         serializedVersion: 2
-        x: 84
+        x: 106
         y: 0
-        width: 42
-        height: 57
+        width: 53
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: atacando-direita-Sheet_3
+      name: Atacando-costas_3
       rect:
         serializedVersion: 2
-        x: 126
+        x: 159
         y: 0
-        width: 42
-        height: 57
+        width: 53
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: atacando-direita-Sheet_4
+      name: Atacando-costas_4
       rect:
         serializedVersion: 2
-        x: 168
+        x: 212
         y: 0
-        width: 42
-        height: 57
+        width: 53
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

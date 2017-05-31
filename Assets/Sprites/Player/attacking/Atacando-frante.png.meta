@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: d211a9b21d9f6c54d86dd299b0813018
-timeCreated: 1494963348
+guid: e94ad206c81f80e408bd2bc0016bc4b0
+timeCreated: 1496270057
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Atacando-Sheet_0
-    21300002: Atacando-Sheet_1
-    21300004: Atacando-Sheet_2
-    21300006: Atacando-Sheet_3
-    21300008: Atacando-Sheet_4
+    21300000: Atacando-frante_0
+    21300002: Atacando-frante_1
+    21300004: Atacando-frante_2
+    21300006: Atacando-frante_3
+    21300008: Atacando-frante_4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -75,65 +75,65 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Atacando-Sheet_0
+      name: Atacando-frante_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 5
         width: 52
-        height: 63
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Atacando-Sheet_1
+      name: Atacando-frante_1
       rect:
         serializedVersion: 2
         x: 52
-        y: 0
+        y: 5
         width: 52
-        height: 63
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Atacando-Sheet_2
+      name: Atacando-frante_2
       rect:
         serializedVersion: 2
         x: 104
-        y: 0
+        y: 5
         width: 52
-        height: 63
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Atacando-Sheet_3
+      name: Atacando-frante_3
       rect:
         serializedVersion: 2
         x: 156
-        y: 0
+        y: 5
         width: 52
-        height: 63
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Atacando-Sheet_4
+      name: Atacando-frante_4
       rect:
         serializedVersion: 2
         x: 208
-        y: 0
+        y: 5
         width: 52
-        height: 63
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
