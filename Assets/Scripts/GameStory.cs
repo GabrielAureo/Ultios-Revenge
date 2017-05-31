@@ -38,6 +38,10 @@ public class GameStory : MonoBehaviour {
 		if(Input.GetButtonDown("Fire1") && reading){
 			RefreshView();
 		}
+		if(Input.GetKeyDown(KeyCode.R)){
+			story.ResetCallstack();
+			RefreshView();
+		}
 	}
 
 	public void RefreshView(){
