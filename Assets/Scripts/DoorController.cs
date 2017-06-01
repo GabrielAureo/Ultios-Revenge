@@ -26,6 +26,9 @@ public class DoorController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
 			if(col.gameObject.tag == "Player"){
+				if(SceneManager.GetActiveScene().name == "Boss Room"){
+					SceneManager.LoadScene("Win");
+				}
 				SceneManager.LoadScene(roomToLoad);
 		}
 	}
