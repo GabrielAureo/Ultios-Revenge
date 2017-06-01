@@ -7,6 +7,7 @@ public class EnemyKillable : MonoBehaviour, IKillable {
 	public IEntity enemy;
 	public RoomManager room;
     public Rigidbody2D rb;
+    public bool isBoss = false;
     private GameObject playerPivot;
 
     public bool pushingBack;
@@ -54,27 +55,29 @@ public class EnemyKillable : MonoBehaviour, IKillable {
 
     IEnumerator ThrowBack(int findDamage)
     {
-        Debug.Log("Quied" + playerPivot.transform.rotation.z);
         pushingBack = true;
-        if (playerPivot.transform.eulerAngles.z == 270)
+        if (!isBoss)
         {
-            Vector3 newPosition = new Vector3(rb.transform.position.x + 0.8f, rb.transform.position.y, rb.transform.position.z);
-            yield return rb.transform.position = newPosition;
-        }
-        else if (playerPivot.transform.eulerAngles.z == 0)
-        {
-            Vector3 newPosition = new Vector3(rb.transform.position.x, rb.transform.position.y + 0.8f, rb.transform.position.z);
-            yield return rb.transform.position = newPosition;
-        }
-        else if (playerPivot.transform.eulerAngles.z == 90)
-        {
-            Vector3 newPosition = new Vector3(rb.transform.position.x - 0.8f, rb.transform.position.y, rb.transform.position.z);
-            yield return rb.transform.position = newPosition;
-        }
-        else if (playerPivot.transform.eulerAngles.z == 180)
-        {
-            Vector3 newPosition = new Vector3(rb.transform.position.x, rb.transform.position.y - 0.8f, rb.transform.position.z);
-            yield return rb.transform.position = newPosition;
+            if (playerPivot.transform.eulerAngles.z == 270)
+            {
+                Vector3 newPosition = new Vector3(rb.transform.position.x + 0.8f, rb.transform.position.y, rb.transform.position.z);
+                yield return rb.transform.position = newPosition;
+            }
+            else if (playerPivot.transform.eulerAngles.z == 0)
+            {
+                Vector3 newPosition = new Vector3(rb.transform.position.x, rb.transform.position.y + 0.8f, rb.transform.position.z);
+                yield return rb.transform.position = newPosition;
+            }
+            else if (playerPivot.transform.eulerAngles.z == 90)
+            {
+                Vector3 newPosition = new Vector3(rb.transform.position.x - 0.8f, rb.transform.position.y, rb.transform.position.z);
+                yield return rb.transform.position = newPosition;
+            }
+            else if (playerPivot.transform.eulerAngles.z == 180)
+            {
+                Vector3 newPosition = new Vector3(rb.transform.position.x, rb.transform.position.y - 0.8f, rb.transform.position.z);
+                yield return rb.transform.position = newPosition;
+            }
         }
         pushingBack = false;
     }
