@@ -3,8 +3,8 @@ Ultio: Finalmente cheguei a esse lugar. Foi nessa masmorra que aqueles aldeões 
 Ultio: Heh. Não é nada que umas moedas de ouros e ração não resolvam para aqueles pobres desgraçados.
 Ultio: E eu ainda tenho a chance de encontrar ele… 
 ->END
-
-
+ 
+ 
 === tutorialBook ===
 Diary: Guia de Batalha da Guarda
 Diary: Este guia serve para ensinar os básicos do combate corpo-a-corpo para todas as sentinelas do calabouço. 
@@ -18,8 +18,8 @@ Diary: Por fim, cabe a você observar os diferentes padrões de luta de cada ini
 Ultio: Um guia de batalha, huh?
 Ultio: Parece que os guardas não fizeram um bom trabalho em aprendê-lo, ou então teriam mais alguns vivos por aqui.
 ->END
-
-
+ 
+ 
 === tutorialRoomStart ===
 Ultio: Não pode ser! Eu já enfrentei criaturas como essas...
 Ultio: INVEJAAAA!
@@ -30,16 +30,16 @@ Ultio: Assim que eu entrei aqui, eu sabia que havia sentido algo familiar. Invej
 Ultio: É a mesma sensação de morte que você deixou ao queimar meu vilarejo, seu demônio maldito!
 Ultio: Pelos meus amigos e família, é hoje que terei sua cabeça.
 ->END
-
+ 
 === diary1 ===
 Ultio: Um livro? Não, parece mais um diário. Mas quem deixari...
 Ultio: INVEJA!? O nome daquele demônio está em várias páginas. Isso deve ser dele.
 Ultio: Bom, vamos ver se encontro algo sobre o meu vilarejo aqui.
 Diary: Hoje eu tive outro daqueles sonhos. Se é que pode ser chamado disso.
 Diary: Eu vi um rei de terras longínquas, cercado de mais ouro e prata do que jamais vi em minha longa vida.
-Diary: Seu domínio se extendia até os limites do continente. Não era incomum outros monarcas se submeterem a uniões, afim de usufruir de uma aliança forte.
+Diary: Seu domínio se estendia até os limites do continente. Não era incomum outros monarcas se submeterem a uniões, afim de usufruir de uma aliança forte.
 Diary: A princípio, imaginei ser outro humano tolo, que se utilizava de sua vocação hereditária para nutrir sua ganância por "poder".
-Diary: Mas uma ultima visão me mostrou cruelmente enganado.
+Diary: Mas uma última visão me mostrou cruelmente enganado.
 Diary: Centenas de pessoas, ambos plebeus e nobres, ouviam o rei discursar da sacada do castelo. Seus olhares imbuídos de um forte sentimento de admiração.
 Diary: E então, tudo escureceu. Desperto em meu aposento, fui deixado em um estado de incompreensão.
 Diary: Em tempos de escuridão e pessimismo, como seria possível um homem suceder em seguir a corrente oposta?
@@ -48,7 +48,7 @@ Ultio: Um rei benevolente? Isso só pode ter saido de um conto de fadas.
 Ultio: A única empatia da nobreza são com seus iguais e seus cofres. Principalmente seus cofres.
 Ultio: Mas Inveja parece acreditar ser real. Seria demais esperar que criaturas surreais compreendessem a nossa realidade.
 ->END
-
+ 
 === diary2 ===
 Diary: Meu desejo se realizou e novamente tive visões daquele humano.
 Diary: Dessa vez, o encontrei alguns anos antes de se tornar rei.
@@ -65,17 +65,17 @@ Diary: "E por fim, lembrem-se sempre..."
 Ultio: Não deixe sua mão ser guiada por inveja...
 Ultio: Esse é o mesmo discurso que meu pai fez para os jovens soldados do vilarejo, no dia em que eles se alistaram para guarda.
 Ultio: Por que o discurso do meu pai estaria nesse diário?
-Diary: E o sonho terminou com uma imagem final das tropas marchando noite a dentro. Confesso que é desanimador já saber o resultado.
+Diary: E o sonho terminou com uma imagem final das tropas marchando noite adentro. Confesso que é desanimador já saber o resultado.
 Diary: Enfim, o humano continua a me surpreender. 
 Diary: E pensar que alguém poderia ser tão altruísta. Tão abnegado ao ponto de colocar sua vida e a de outros em risco, pelo bem de um povo que não é o seu.
 Diary: Esse humano, ele me enche de...
 Diary: Inveja.
-Ultio: Mas que diabos? Esse diário é ainda mais estranho.
+Ultio: Mas que diabos? Este diário é ainda mais estranho.
 Ultio: Primeiro, o cara em quem Inveja tem uma queda recita o discurso do meu pai.
 Ultio: E logo no fim. O enche de inveja?. O que isso quer dizer?
 Ultio: Se isso for uma piada, eu espero que ele tenha boas risadas antes que eu corte sua garganta fora.
 ->END
-
+ 
 === diary3 ===
 Diary: Isso é maravilhoso! Eu tive mais um sonho com o humano.
 Diary: Mas esse foi altamente especial. De várias formas.
@@ -97,7 +97,7 @@ Ultio: Meu pai lutando contra demônios, enquanto minha mãe jazia morta no chã
 Ultio: Um deles o perfurou com um tentáculo através da armadura, se alojando fundo em seu coração.
 Ultio: Eu peguei seu escudo e espada e furiosamente matei todos os monstros.
 Ultio: Eu não conseguia acreditar no que estava acontecendo. Eu queria chorar, mas não conseguia.
-Ultio: Tudo o que conseguia era sentir era raiva. Tudo o que conseguia pensar era em me vingar dos responsáveis.
+Ultio: Tudo o que conseguia sentir era raiva. Tudo o que conseguia pensar era em me vingar dos responsáveis.
 Diary: Seu pai sentado na sala de estar. Sua armadura dos velhos tempos de guarda ao seu lado.
 Diary: Ele entregou a veste ao filho e disse:
 Diary: "Ultio, isso é pra você"
@@ -133,7 +133,7 @@ Ultio: EU NÃO SOU NADA PARECIDO COM VOCÊ, SEU FILHO DA PUTA!
 Ultio: Chega disso. Eu vou acabar com você aqui e agora.
 Inveja: Pois será um prazer.
 ->END
-
+ 
 === bossRoomEnd ===
 Inveja: Incrível... uma fúria tão grande que até Ira ficaria impressionado...
 Inveja: Vamos, termine isso de uma vez.
@@ -145,7 +145,7 @@ Inveja: Ah, tolo humano. Você subestima os limites da inveja...
 Inveja: Mas nesse caso, você está correto na sua suposição.
 Inveja: Eu não senti inveja das suas conquistas, mas sim das suas motivações.
 Inveja: Você tinha a determinação para agir, para implicar mudanças no mundo ao seu redor.
-Inveja: mas diferente de outros artesões do mundo, você não tinha ambições em mente.
+Inveja: mas diferente de outros artesãos do mundo, você não tinha ambições em mente.
 Inveja: As suas ações... elas careciam de inveja.
 Inveja: E então, eu quis te desviar. 
 Inveja: Quebrar a sua justiça e te puxar para o mesmo caminho.
@@ -163,5 +163,7 @@ Ultio: Adeus, demônio.
 ->END
     
     
-
-
+ 
+ 
+ 
+ 
