@@ -50,6 +50,10 @@ public class Player: MonoBehaviour, IEntity {
     enum way {left, right, bottom, upper, stop };
 
     // Use this for initialization
+
+    void Awake(){
+        
+    }
     void Start () {
 		rb = this.gameObject.GetComponent<Rigidbody2D>();
         sprite = this.gameObject.GetComponent<SpriteRenderer>();
@@ -58,7 +62,7 @@ public class Player: MonoBehaviour, IEntity {
         blockTrig = transform.GetChild(0).GetChild(1).gameObject;
         life = GameObject.FindGameObjectWithTag("Canvas").transform.root.GetChild(1).gameObject.GetComponent<Image>();
         atkPivot.SetActive(false);
-        animator = GetComponent<Animator>();
+        animator = this.gameObject.GetComponent<Animator>();
         animator.SetFloat("blockway", 5f);
         moving = 0;
         state = way.stop;
