@@ -21,6 +21,9 @@ public class Envy : Enemy {
 
     override protected void Attack()
     {
+        if(GameStory.reading){
+            return;
+        }
         anim2 = this.gameObject.transform.root.GetChild(2).gameObject.GetComponent<Animator>();
         laser = this.gameObject.transform.root.GetChild(2).GetChild(0).gameObject;
 

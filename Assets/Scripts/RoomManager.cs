@@ -23,6 +23,9 @@ public class RoomManager : MonoBehaviour {
 	}
 	void Start () {
 		if(diary != null){
+			if(Diary.diaryRead){
+				Diary.increaseDiary();
+			}
 			diary.SetActive(false);
 		}
 
